@@ -37,47 +37,11 @@ void solve() {
     // }
     // cout << endl;
     // return;
-    vector < vector < bool > > visited (r, vector < bool > (c, false));
-    for (int x = 0; x < k; x++) {
-        int max_count = count[x];
-        queue < pii > q;
-        while (max_count) {
-            pii start;
-            for (int i = 0; i < r; i++) {
-                bool found = false;
-                for (int j = 0; j < c; j++) {
-                    if (!visited[i][j]) {
-                        start = {i, j};
-                        found = true;
-                        break;
-                    }
-                }
-                if (found) break;
-            }
-            q.push (start);
-            visited[start.first][start.second] = true;
-            if (mat[start.first][start.second] == 'R') {
-                max_count--;
-            }
-            while (!q.empty()) {
-                pii p = q.front(); q.pop();
-                mat[p.first][p.second] = chars[x];
-                for (pii add : toAdd) {
-                    int x = p.first + add.first;
-                    int y = p.second + add.second;
-                    if (x >= 0 && y >= 0 && x < r && y < c && !visited[x][y]) {
-                        if (max_count == 0) {
-                            break;
-                        }
-                        q.push ({x, y});
-                        visited[x][y] = true;
-                        if (mat[x][y] == 'R') {
-                            max_count--;
-                        }
-                    }
-                }
-            }
-        }
+    int left = 0, top = 0;
+    int right = c - 1, bottom = r - 1;
+    int TOTAL = r * c;
+    while (TOTAL--) {
+        
     }
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c; j++) {
