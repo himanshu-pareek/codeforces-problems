@@ -8,7 +8,7 @@ void solve() {
     scanf ("%d %d", &n, &m);
     vector < int > a (n);
     for (int & x : a) scanf ("%d", & x);
-    if (m < n || n < 2) {
+    if (m < n || n <= 2) {
         printf ("-1\n");
         return;
     }
@@ -23,17 +23,17 @@ void solve() {
         chains.push_back ({b[i - 1].second, b[i].second});
     }
     vector < pii > extras;
-    m -= n;
-    while (m--) {
-        pii c = chains.back();
-        if (c.first == b[0].second) {
-            extras.push_back ({b[0].second, b[1].second});
-        } else {
-            chains.pop_back ();
-            extras.push_back ({c.first, b[0].second});
-            extras.push_back ({c.second, b[1].second});
-        }
-    }
+    //m -= n;
+    //while (m--) {
+        //pii c = chains.back();
+        //if (c.first == b[0].second) {
+            //extras.push_back ({b[0].second, b[1].second});
+        //} else {
+            //chains.pop_back ();
+            //extras.push_back ({c.first, b[0].second});
+            //extras.push_back ({c.second, b[1].second});
+        //}
+    //}
     ll cost = 0;
     for (pii p : chains) {
         cost += a[p.first] + a[p.second];
